@@ -14,6 +14,11 @@ export default async function Home() {
         <Link href="/tv-shows/create">Add TV Show</Link>
         <TvShowList tvShows={tvShows} />
       </section>
+
+      <section>
+        <h2>Watchlists</h2>
+        <Link href="/watchlists">View Watchlists</Link>
+      </section>
     </main>
   );
 }
