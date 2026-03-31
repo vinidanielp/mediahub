@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createAsset, updateAsset } from "@/lib/api-client";
+import { createAsset, updateAsset, deleteAsset } from "@/lib/api-client";
 import type { TvShow } from "@/types";
 
 export async function createTvShowAction(formData: FormData) {
@@ -43,4 +43,19 @@ export async function updateTvShowAction(formData: FormData) {
 
   revalidatePath("/");
   redirect("/");
+}
+
+export async function deleteTvShowAction(formData: FormData) {
+  const title = formData.get("title") as string;
+
+  if (!title) {
+    throw new Error("Title is required");
+  }
+
+  await deleteAsset({
+    "@assetType": "tvShows",
+    title,
+  });
+
+  revalidatePath("/");
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DeleteTvShowButton } from "./delete-tv-show-button";
 import type { TvShow } from "@/types";
 
 interface TvShowListProps {
@@ -18,7 +19,8 @@ export function TvShowList({ tvShows }: TvShowListProps) {
           {show.recommendedAge}+){" "}
           <Link href={`/tv-shows/${encodeURIComponent(show.title)}/edit`}>
             Edit
-          </Link>
+          </Link>{" "}
+          <DeleteTvShowButton title={show.title} />
         </li>
       ))}
     </ul>
