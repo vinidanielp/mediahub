@@ -1,9 +1,9 @@
-import type { AssetType, AssetKey } from './models';
+import type { AssetType, AssetKey } from "./models";
 
 export interface SearchPayload {
   query: {
     selector: {
-      '@assetType': AssetType;
+      "@assetType": AssetType;
       [key: string]: unknown;
     };
   };
@@ -13,6 +13,10 @@ export interface SearchPayload {
 
 export interface ReadAssetPayload {
   key: AssetKey;
+}
+
+export interface CreateAssetPayload {
+  asset: Array<Record<string, unknown> & { "@assetType": AssetType }>;
 }
 
 export interface SearchResponse<T> {

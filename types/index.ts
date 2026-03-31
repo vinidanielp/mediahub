@@ -7,10 +7,11 @@ export type {
   Watchlist,
   AssetType,
   Asset,
-} from './models';
+} from "./models";
 
 export type {
   SearchPayload,
   ReadAssetPayload,
+  CreateAssetPayload,
   SearchResponse,
-} from './api';
+} from "./api";
