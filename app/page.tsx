@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { searchAssets } from "@/lib/api-client";
 import { TvShowList } from "@/components/tv-show-list";
+import { SearchBar } from "@/components/search-bar";
 import type { TvShow } from "@/types";
 
 export default async function Home() {
@@ -9,6 +11,9 @@ export default async function Home() {
   return (
     <main>
       <h1>MediaHub</h1>
+      <Suspense fallback={null}>
+        <SearchBar />
+      </Suspense>
       <section>
         <h2>TV Shows</h2>
         <Link href="/tv-shows/create">Add TV Show</Link>
