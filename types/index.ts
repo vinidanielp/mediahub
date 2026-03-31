@@ -14,5 +14,6 @@ export type {
   ReadAssetPayload,
   CreateAssetPayload,
   UpdateAssetPayload,
+  DeleteAssetPayload,
   SearchResponse,
 } from "./api";

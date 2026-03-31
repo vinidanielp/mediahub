@@ -4,6 +4,7 @@ import type {
   ReadAssetPayload,
   CreateAssetPayload,
   UpdateAssetPayload,
+  DeleteAssetPayload,
   SearchResponse,
 } from "@/types";
 import { API_ENDPOINTS } from "./api-endpoints";
@@ -93,4 +94,14 @@ export async function updateAsset<T extends Asset>(
   };
 
   return apiPost<UpdateAssetPayload, T>(API_ENDPOINTS.UPDATE_ASSET, payload);
+}
+
+export async function deleteAsset(
+  key: DeleteAssetPayload["key"],
+): Promise<void> {
+  const payload: DeleteAssetPayload = { key };
+  await apiPost<DeleteAssetPayload, unknown>(
+    API_ENDPOINTS.DELETE_ASSET,
+    payload,
+  );
 }

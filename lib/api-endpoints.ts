@@ -4,4 +4,5 @@ export const API_ENDPOINTS = {
   GET_SCHEMA: "/api/query/getSchema",
   CREATE_ASSET: "/api/invoke/createAsset",
   UPDATE_ASSET: "/api/invoke/updateAsset",
+  DELETE_ASSET: "/api/invoke/deleteAsset",
 } as const;

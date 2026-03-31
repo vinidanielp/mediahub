@@ -23,6 +23,10 @@ export interface UpdateAssetPayload {
   update: Record<string, unknown> & { "@assetType": AssetType };
 }
 
+export interface DeleteAssetPayload {
+  key: AssetKey | (Record<string, unknown> & { "@assetType": AssetType });
+}
+
 export interface SearchResponse<T> {
   result: T[];
   metadata?: {
