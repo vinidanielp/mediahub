@@ -3,6 +3,7 @@ import type {
   SearchPayload,
   ReadAssetPayload,
   CreateAssetPayload,
+  UpdateAssetPayload,
   SearchResponse,
 } from "@/types";
 import { API_ENDPOINTS } from "./api-endpoints";
@@ -80,4 +81,14 @@ export async function createAsset<T extends Asset>(
   };
 
   return apiPost<CreateAssetPayload, T[]>(API_ENDPOINTS.CREATE_ASSET, payload);
+}
+
+export async function updateAsset<T extends Asset>(
+  asset: Pick<T, "@assetType"> & Partial<Omit<T, keyof AssetBase>>,
+): Promise<T> {
+  const payload: UpdateAssetPayload = {
+    update: asset as Record<string, unknown> & { "@assetType": AssetType },
+  };
+
+  return apiPost<UpdateAssetPayload, T>(API_ENDPOINTS.UPDATE_ASSET, payload);
 }

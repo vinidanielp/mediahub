@@ -19,6 +19,10 @@ export interface CreateAssetPayload {
   asset: Array<Record<string, unknown> & { "@assetType": AssetType }>;
 }
 
+export interface UpdateAssetPayload {
+  update: Record<string, unknown> & { "@assetType": AssetType };
+}
+
 export interface SearchResponse<T> {
   result: T[];
   metadata?: {

@@ -13,5 +13,6 @@ export type {
   SearchPayload,
   ReadAssetPayload,
   CreateAssetPayload,
+  UpdateAssetPayload,
   SearchResponse,
 } from "./api";
