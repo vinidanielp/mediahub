@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { DeleteSeasonButton } from './delete-season-button';
-import type { Season } from '@/types';
+import Link from "next/link";
+import { DeleteSeasonButton } from "./delete-season-button";
+import type { Season } from "@/types";
 
 interface SeasonListProps {
   seasons: Season[];
@@ -15,14 +15,22 @@ export function SeasonList({ seasons, tvShowTitle }: SeasonListProps) {
   return (
     <ul>
       {seasons.map((season) => (
-        <li key={season['@key']}>
-          <strong>Season {season.number}</strong> — Year: {season.year}{' '}
+        <li key={season["@key"]}>
+          <Link
+            href={`/tv-shows/${encodeURIComponent(tvShowTitle)}/seasons/${season.number}`}
+          >
+            <strong>Season {season.number}</strong>
+          </Link>{" "}
+          — Year: {season.year}{" "}
           <Link
             href={`/tv-shows/${encodeURIComponent(tvShowTitle)}/seasons/${season.number}/edit`}
           >
             Edit
-          </Link>{' '}
-          <DeleteSeasonButton tvShowTitle={tvShowTitle} number={season.number} />
+          </Link>{" "}
+          <DeleteSeasonButton
+            tvShowTitle={tvShowTitle}
+            number={season.number}
+          />
         </li>
       ))}
     </ul>
