@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { createAsset, updateAsset } from "@/lib/api-client";
 import type { TvShow } from "@/types";
 
@@ -21,6 +22,7 @@ export async function createTvShowAction(formData: FormData) {
   });
 
   revalidatePath("/");
+  redirect("/");
 }
 
 export async function updateTvShowAction(formData: FormData) {
@@ -40,4 +42,5 @@ export async function updateTvShowAction(formData: FormData) {
   });
 
   revalidatePath("/");
+  redirect("/");
 }

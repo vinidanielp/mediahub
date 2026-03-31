@@ -68,7 +68,9 @@ export async function searchAssets<T extends Asset>(
   return response.result;
 }
 
-export async function readAsset<T extends Asset>(key: AssetKey): Promise<T> {
+export async function readAsset<T extends Asset>(
+  key: ReadAssetPayload["key"],
+): Promise<T> {
   const payload: ReadAssetPayload = { key };
   return apiPost<ReadAssetPayload, T>(API_ENDPOINTS.READ_ASSET, payload);
 }

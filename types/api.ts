@@ -12,7 +12,7 @@ export interface SearchPayload {
 }
 
 export interface ReadAssetPayload {
-  key: AssetKey;
+  key: AssetKey | (Record<string, unknown> & { "@assetType": AssetType });
 }
 
 export interface CreateAssetPayload {

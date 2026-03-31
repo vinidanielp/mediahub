@@ -1,4 +1,5 @@
-import type { TvShow } from '@/types';
+import Link from "next/link";
+import type { TvShow } from "@/types";
 
 interface TvShowListProps {
   tvShows: TvShow[];
@@ -12,8 +13,12 @@ export function TvShowList({ tvShows }: TvShowListProps) {
   return (
     <ul>
       {tvShows.map((show) => (
-        <li key={show['@key']}>
-          <strong>{show.title}</strong> — {show.description} (Age: {show.recommendedAge}+)
+        <li key={show["@key"]}>
+          <strong>{show.title}</strong> — {show.description} (Age:{" "}
+          {show.recommendedAge}+){" "}
+          <Link href={`/tv-shows/${encodeURIComponent(show.title)}/edit`}>
+            Edit
+          </Link>
         </li>
       ))}
     </ul>
