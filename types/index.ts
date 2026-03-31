@@ -1,5 +1,6 @@
 export type {
   AssetKey,
+  AssetRef,
   AssetBase,
   TvShow,
   Season,

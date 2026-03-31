@@ -1,31 +1,35 @@
 export interface AssetKey {
-  '@assetType': string;
-  '@key': string;
+  "@assetType": string;
+  "@key": string;
 }
 
+export type AssetRef =
+  | AssetKey
+  | (Record<string, unknown> & { "@assetType": string });
+
 export interface AssetBase extends AssetKey {
-  '@lastTouchBy': string;
-  '@lastTx': string;
-  '@lastUpdated': string;
+  "@lastTouchBy": string;
+  "@lastTx": string;
+  "@lastUpdated": string;
 }
 
 export interface TvShow extends AssetBase {
-  '@assetType': 'tvShows';
+  "@assetType": "tvShows";
   title: string;
   description: string;
   recommendedAge: number;
 }
 
 export interface Season extends AssetBase {
-  '@assetType': 'seasons';
+  "@assetType": "seasons";
   number: number;
-  tvShow: AssetKey;
+  tvShow: AssetRef;
   year: number;
 }
 
 export interface Episode extends AssetBase {
-  '@assetType': 'episodes';
-  season: AssetKey;
+  "@assetType": "episodes";
+  season: AssetRef;
   episodeNumber: number;
   title: string;
   releaseDate: string;
@@ -34,12 +38,12 @@ export interface Episode extends AssetBase {
 }
 
 export interface Watchlist extends AssetBase {
-  '@assetType': 'watchlist';
+  "@assetType": "watchlist";
   title: string;
-  tvShows?: AssetKey[];
+  tvShows?: AssetRef[];
   description?: string;
 }
 
-export type AssetType = 'tvShows' | 'seasons' | 'episodes' | 'watchlist';
+export type AssetType = "tvShows" | "seasons" | "episodes" | "watchlist";
 
 export type Asset = TvShow | Season | Episode | Watchlist;
