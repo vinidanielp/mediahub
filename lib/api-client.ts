@@ -52,11 +52,13 @@ async function apiPost<TBody, TResponse>(
 
 export async function searchAssets<T extends Asset>(
   assetType: AssetType,
+  filters?: Record<string, unknown>,
 ): Promise<T[]> {
   const payload: SearchPayload = {
     query: {
       selector: {
         "@assetType": assetType,
+        ...filters,
       },
     },
   };

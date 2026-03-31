@@ -15,8 +15,10 @@ export function TvShowList({ tvShows }: TvShowListProps) {
     <ul>
       {tvShows.map((show) => (
         <li key={show["@key"]}>
-          <strong>{show.title}</strong> — {show.description} (Age:{" "}
-          {show.recommendedAge}+){" "}
+          <Link href={`/tv-shows/${encodeURIComponent(show.title)}`}>
+            <strong>{show.title}</strong>
+          </Link>{" "}
+          — {show.description} (Age: {show.recommendedAge}+){" "}
           <Link href={`/tv-shows/${encodeURIComponent(show.title)}/edit`}>
             Edit
           </Link>{" "}
