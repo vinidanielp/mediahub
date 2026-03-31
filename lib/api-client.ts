@@ -1,4 +1,4 @@
-import type { AssetType, AssetKey, Asset } from "@/types";
+import type { AssetType, AssetKey, AssetBase, Asset } from "@/types";
 import type {
   SearchPayload,
   ReadAssetPayload,
@@ -73,7 +73,7 @@ export async function readAsset<T extends Asset>(key: AssetKey): Promise<T> {
 }
 
 export async function createAsset<T extends Asset>(
-  asset: Omit<T, keyof import("@/types").AssetBase>,
+  asset: Pick<T, "@assetType"> & Omit<T, keyof AssetBase>,
 ): Promise<T[]> {
   const payload: CreateAssetPayload = {
     asset: [asset as Record<string, unknown> & { "@assetType": AssetType }],
